@@ -1,0 +1,15 @@
+<template>
+    <lightning-card  title="Photo Gallery" icon-name="action:add_photo_video">
+        <lightning-file-upload
+            slot="actions"
+            name="fileUploader"
+            accept={acceptedFormats}
+            record-id={recordId}
+            onuploadfinished={handleUploadFinished}
+            multiple>
+        </lightning-file-upload>
+        
+        <c-photo-list record-id={recordId}></c-photo-list>
+
+    </lightning-card>
+</template>

@@ -1,0 +1,10 @@
+<template>
+    <div class="picture" onclick={imageClick}>
+        <img src={imageUrl} />
+    </div>
+
+    <template if:true={isImageClicked}>
+        <c-photo-modal title={title} clicked-image-url={clickedImageUrl} onselected={handleModalClosed}></c-photo-modal>
+    </template>
+
+</template>
