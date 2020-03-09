@@ -6,10 +6,17 @@
         <template if:true={zeroPhotoDataLength}>
             No related images found. Please attach photos of supported extension
         </template>
-        <template for:each={photoData} for:item="photo">
+        <template for:each={showData} for:item="photo">
             <lightning-layout-item padding="around-small" key={photo.Id}>
                 <c-photo content-id={photo.Id} title={photo.Title}></c-photo>
             </lightning-layout-item>
         </template>
   </lightning-layout>
+
+  <template if:true={showFooter}>
+    <div class="slds-border_top">
+        <a class="slds-align_absolute-center slds-p-top_small" onclick={viewAll}>{footerText}</a>
+    </div>
+  </template>
+  
 </template>
