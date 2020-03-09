@@ -8,6 +8,7 @@ export default class PhotoGalleryCard extends LightningElement {
 
     @api recordId;
     @api minImages;
+    @api displayFileName;
     
     @track cardLabel = defaultLabel;
     @track cardIcon = defaultIcon;

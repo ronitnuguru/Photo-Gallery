@@ -5,6 +5,7 @@ export default class PhotoList extends LightningElement {
 
     @api recordId;
     @api minImages;
+    @api displayFileName;
     @track showData;
     @track fullData;
     @track isPhotoListDataLoaded = false;
@@ -21,7 +22,7 @@ export default class PhotoList extends LightningElement {
             if(this.minImages)
                 this.showFooter = data.length > this.minImages ? true : false;
             
-                this.isPhotoListDataLoaded = true;
+            this.isPhotoListDataLoaded = true;
             this.fullData = data;
             this.showMinData();
         }

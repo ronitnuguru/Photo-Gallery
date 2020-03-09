@@ -8,9 +8,11 @@
         <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse slds-current-color" title="Close" onclick={closeModal}>
           <lightning-icon size="x-small" icon-name="utility:close" alternative-text="Close" title="Close"></lightning-icon>
         </button>
-        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
-          <strong>{title}</strong>
-        </h2>
+        <template if:true={displayFileName}>
+          <h2 class="slds-modal__title slds-hyphenate">
+            <strong>{title}</strong>
+          </h2>
+        </template>
       </header>
       <div class="slds-modal__content slds-p-around_medium">
         <img class="slds-align_absolute-center" src={clickedImageUrl} />

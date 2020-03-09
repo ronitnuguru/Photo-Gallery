@@ -4,7 +4,7 @@
     </div>
 
     <template if:true={isImageClicked}>
-        <c-photo-modal title={title} clicked-image-url={clickedImageUrl} onselected={handleModalClosed}></c-photo-modal>
+        <c-photo-modal title={title} clicked-image-url={clickedImageUrl} onselected={handleModalClosed} display-file-name={displayFileName}></c-photo-modal>
     </template>
 
 </template>

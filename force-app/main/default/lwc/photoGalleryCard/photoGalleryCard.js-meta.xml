@@ -14,6 +14,7 @@
             <property name="label" type="String" label="Label" default="Photo Gallery"/>
             <property name="icon" type="String" label="Icon" default="action:add_photo_video"/>
             <property name="minImages" type="Integer" label="Minimum Images"/>
+            <property name="displayFileName" type="Boolean" label="Display File Name?" default="true" />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
