@@ -11,6 +11,9 @@
                 <supportedFormFactor type="Small" />
                 <supportedFormFactor type="Large" />
             </supportedFormFactors>
+            <property name="label" type="String" label="Label" default="Photo Gallery"/>
+            <property name="icon" type="String" label="Icon" default="action:add_photo_video"/>
+            <property name="minImages" type="Integer" label="Minimum Images"/>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
