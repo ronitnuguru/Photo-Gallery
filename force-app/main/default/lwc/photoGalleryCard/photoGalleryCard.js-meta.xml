@@ -4,6 +4,10 @@
     <isExposed>true</isExposed>
     <targets>
         <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__AppPage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
     </targets>
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage">
@@ -11,6 +15,24 @@
                 <supportedFormFactor type="Small" />
                 <supportedFormFactor type="Large" />
             </supportedFormFactors>
+            <property name="label" type="String" label="Label" default="Photo Gallery"/>
+            <property name="icon" type="String" label="Icon" default="action:add_photo_video"/>
+            <property name="minImages" type="Integer" label="Minimum Images"/>
+            <property name="displayFileName" type="Boolean" label="Display File Name?" default="true" />
+        </targetConfig>
+        <targetConfig targets="lightning__HomePage,lightning__AppPage">
+            <supportedFormFactors>
+                <supportedFormFactor type="Small" />
+                <supportedFormFactor type="Large" />
+            </supportedFormFactors>
+            <property name="recordId" type="String" label="Record ID" required="true" />
+            <property name="label" type="String" label="Label" default="Photo Gallery"/>
+            <property name="icon" type="String" label="Icon" default="action:add_photo_video"/>
+            <property name="minImages" type="Integer" label="Minimum Images"/>
+            <property name="displayFileName" type="Boolean" label="Display File Name?" default="true" />
+        </targetConfig>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="recordId" type="String" label="Record ID" required="true" />
             <property name="label" type="String" label="Label" default="Photo Gallery"/>
             <property name="icon" type="String" label="Icon" default="action:add_photo_video"/>
             <property name="minImages" type="Integer" label="Minimum Images"/>

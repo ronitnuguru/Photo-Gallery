@@ -7,7 +7,6 @@ export default class PhotoModal extends LightningElement {
 
     connectedCallback(){
         this.title = this.title.toUpperCase();
-        console.log(this.modalFileNameDisplay);
     }
 
     closeModal(){
