@@ -32,6 +32,7 @@
             <property name="minImages" type="Integer" label="Minimum Images"/>
             <property name="imageSize" type="Integer" label="Image Size" default="3"/>
             <property name="displayFileName" type="Boolean" label="Display File Name?" default="true" />
+            <property name="uploadFiles" type="Boolean" label="Upload Files" default="false" />
         </targetConfig>
         <targetConfig targets="lightningCommunity__Default">
             <property name="recordId" type="String" label="Record ID" required="true" />
@@ -40,6 +41,7 @@
             <property name="minImages" type="Integer" label="Minimum Images"/>
             <property name="imageSize" type="Integer" label="Image Size" default="3"/>
             <property name="displayFileName" type="Boolean" label="Display File Name?" default="true" />
+            <property name="uploadFiles" type="Boolean" label="Upload Files" default="false" />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
