@@ -18,7 +18,9 @@ export default class PhotoList extends LightningElement {
     @track showFooter;
     @track footerText = "View All";
     @track footerToggle = true;
+    @track imageBadge;
 
+   
     @wire(getRelatedImagesByRecordId, { recordId: '$recordId' })
     wiredFilesList({ error, data }) {
         if(data) {
@@ -27,9 +29,10 @@ export default class PhotoList extends LightningElement {
             if(this.minImages)
                 this.showFooter = data.length > this.minImages ? true : false;
             
-            this.isPhotoListDataLoaded = true;
-            this.fullData = data;
-            this.showMinData();
+        this.isPhotoListDataLoaded = true;
+        this.imageBadge = data.length;
+        this.fullData = data;
+        this.showMinData();
         }
         else if (error) {
             console.log(error);
@@ -39,6 +42,7 @@ export default class PhotoList extends LightningElement {
     viewAll(){
         this.footerText = this.footerToggle ? "View Less" : "View All";
         this.photoData = this.footerToggle ? this.showMaxData() : this.showMinData();
+        this.imageBadge = this.footerToggle ? this.minImages : this.fullData.length;
         this.footerToggle = !this.footerToggle;
     }
 

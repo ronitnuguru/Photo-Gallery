@@ -18,7 +18,11 @@
 
   <template if:true={showFooter}>
     <div class="slds-border_top">
-      <a class="slds-align_absolute-center slds-p-top_small" onclick={viewAll}>{footerText}</a>
+        <span class="slds-align_absolute-center slds-p-top_small" onclick={viewAll}>
+          <a>{footerText}</a>
+          &nbsp;&nbsp;
+          <lightning-badge label={imageBadge}></lightning-badge>
+        </span> 
     </div>
   </template>
 </template>
