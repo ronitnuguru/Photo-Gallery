@@ -8,7 +8,9 @@
       No related images found. Please attach photos of supported file extension
     </template>
     <template for:each={showData} for:item="photo">
-      <lightning-layout-item flexibility="auto" padding="around-small" key={photo.Id} size={imageSize}>
+      <lightning-layout-item flexibility="auto" padding="around-small" key={photo.Id} size={imageSize}
+        small-device-size={smallDeviceSize} medium-device-size={mediumDeviceSize} large-device-size={largeDeviceSize}
+      >
         <c-photo content-id={photo.Id} title={photo.Title} display-file-name={displayFileName}></c-photo>
       </lightning-layout-item>
     </template>

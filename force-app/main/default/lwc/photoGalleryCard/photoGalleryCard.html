@@ -1,14 +1,16 @@
 <template>
     <lightning-card  title={label} icon-name={icon}>
 
-        <template if:false={uploadFiles}>
+        <template if:true={uploadFiles}>
             <lightning-file-upload label="Attach Images" slot="actions" name="fileUploader"
                 accept={acceptedFormats} record-id={recordId} 
                 onuploadfinished={handleUploadFinished} multiple>
         </lightning-file-upload>
         </template>
-    
-        
-        <c-photo-list record-id={recordId} min-images={minImages} display-file-name={displayFileName} image-size={imageSize}></c-photo-list>
+
+        <c-photo-list record-id={recordId} min-images={minImages} display-file-name={displayFileName} 
+            image-size={imageSize} small-device-size={smallDeviceSize} medium-device-size={mediumDeviceSize} large-device-size={largeDeviceSize}
+        >
+    </c-photo-list>
     </lightning-card>
 </template>

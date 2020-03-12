@@ -7,6 +7,9 @@ export default class PhotoList extends LightningElement {
     @api minImages;
     @api displayFileName;
     @api imageSize;
+    @api smallDeviceSize;
+    @api mediumDeviceSize;
+    @api largeDeviceSize;
 
     @track showData;
     @track fullData;

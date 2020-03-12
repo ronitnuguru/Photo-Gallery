@@ -18,8 +18,12 @@
             <property name="label" type="String" label="Label" default="Photo Gallery"/>
             <property name="icon" type="String" label="Icon" default="action:add_photo_video"/>
             <property name="minImages" type="Integer" label="Minimum Images"/>
-            <property name="imageSize" type="Integer" label="Image Size" default="3"/>
+            <property name="imageSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Image Size" default="12"/>
+            <property name="smallDeviceSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Small Device Size" default="6"/>
+            <property name="mediumDeviceSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Medium Device Size" default="4"/>
+            <property name="largeDeviceSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Large Device Size" default="3"/>
             <property name="displayFileName" type="Boolean" label="Display File Name?" default="true" />
+            <property name="uploadFiles" type="Boolean" label="Upload Files" default="false" />
         </targetConfig>
         <targetConfig targets="lightning__HomePage,lightning__AppPage">
             <supportedFormFactors>
@@ -30,7 +34,10 @@
             <property name="label" type="String" label="Label" default="Photo Gallery"/>
             <property name="icon" type="String" label="Icon" default="action:add_photo_video"/>
             <property name="minImages" type="Integer" label="Minimum Images"/>
-            <property name="imageSize" type="Integer" label="Image Size" default="3"/>
+            <property name="imageSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Image Size" default="12"/>
+            <property name="smallDeviceSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Small Device Size" default="6"/>
+            <property name="mediumDeviceSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Medium Device Size" default="4"/>
+            <property name="largeDeviceSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Large Device Size" default="3"/>
             <property name="displayFileName" type="Boolean" label="Display File Name?" default="true" />
             <property name="uploadFiles" type="Boolean" label="Upload Files" default="false" />
         </targetConfig>
@@ -39,7 +46,10 @@
             <property name="label" type="String" label="Label" default="Photo Gallery"/>
             <property name="icon" type="String" label="Icon" default="action:add_photo_video"/>
             <property name="minImages" type="Integer" label="Minimum Images"/>
-            <property name="imageSize" type="Integer" label="Image Size" default="3"/>
+            <property name="imageSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Image Size" default="12"/>
+            <property name="smallDeviceSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Small Device Size" default="6"/>
+            <property name="mediumDeviceSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Medium Device Size" default="4"/>
+            <property name="largeDeviceSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Large Device Size" default="3"/>
             <property name="displayFileName" type="Boolean" label="Display File Name?" default="true" />
             <property name="uploadFiles" type="Boolean" label="Upload Files" default="false" />
         </targetConfig>

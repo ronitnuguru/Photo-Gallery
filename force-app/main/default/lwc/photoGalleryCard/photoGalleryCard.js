@@ -7,13 +7,12 @@ export default class PhotoGalleryCard extends LightningElement {
     @api minImages;
     @api displayFileName;
     @api imageSize;
+    @api smallDeviceSize;
+    @api mediumDeviceSize;
+    @api largeDeviceSize;
     @api icon;
     @api label;
     @api uploadFiles; 
-
-    connectedCallback(){
-        this.uploadFiles = this.uploadFiles ? false :true;
-    }
 
     get acceptedFormats() {
         return ['.jpg', '.jpeg', '.png', '.svg', '.gif'];
