@@ -5,6 +5,8 @@ export default class Photo extends LightningElement {
     @track imageUrl;
     @api title;
     @api displayFileName;
+    @api uniformHeight;
+    @api uniformWidth;
     
     @track prefixUrl = `/sfc/servlet.shepherd/version/download/`;
     @track isImageClicked = false;

@@ -8,20 +8,23 @@
       No related images found. Please attach photos of supported file extension
     </template>
     <template for:each={showData} for:item="photo">
-      <lightning-layout-item flexibility="auto" padding="around-small" key={photo.Id} size={imageSize}
+      <lightning-layout-item flexibility="auto,shrink" padding="around-small" key={photo.Id} size={imageSize}
         small-device-size={smallDeviceSize} medium-device-size={mediumDeviceSize} large-device-size={largeDeviceSize}
       >
-        <c-photo content-id={photo.Id} title={photo.Title} display-file-name={displayFileName}></c-photo>
+        <c-photo content-id={photo.Id} title={photo.Title} display-file-name={displayFileName}
+          uniform-height={uniformHeight} uniform-width={uniformWidth}
+        ></c-photo>
       </lightning-layout-item>
     </template>
   </lightning-layout>
 
   <template if:true={showFooter}>
     <div class="slds-border_top">
-        <span class="slds-align_absolute-center slds-p-top_small" onclick={viewAll}>
+        <span class="slds-align_absolute-center slds-p-top_small" onclick={viewAll} style="cursor:pointer">
           <a>{footerText}</a>
-          &nbsp;&nbsp;
+          &nbsp;
           <lightning-badge label={imageBadge}></lightning-badge>
+          <lightning-icon icon-name="utility:chevronright" alternative-text="more" size="xx-small"></lightning-icon>
         </span> 
     </div>
   </template>

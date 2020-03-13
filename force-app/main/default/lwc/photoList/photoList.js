@@ -2,7 +2,7 @@ import { LightningElement, api, wire, track } from 'lwc';
 import getRelatedImagesByRecordId from '@salesforce/apex/ImagesListController.getRelatedImagesByRecordId';
 
 export default class PhotoList extends LightningElement {
-
+    
     @api recordId;
     @api minImages;
     @api displayFileName;
@@ -10,6 +10,8 @@ export default class PhotoList extends LightningElement {
     @api smallDeviceSize;
     @api mediumDeviceSize;
     @api largeDeviceSize;
+    @api uniformHeight;
+    @api uniformWidth;
 
     @track showData;
     @track fullData;

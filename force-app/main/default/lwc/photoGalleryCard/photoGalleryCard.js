@@ -12,7 +12,9 @@ export default class PhotoGalleryCard extends LightningElement {
     @api largeDeviceSize;
     @api icon;
     @api label;
-    @api uploadFiles; 
+    @api uploadFiles;
+    @api uniformHeight;
+    @api uniformWidth;
 
     get acceptedFormats() {
         return ['.jpg', '.jpeg', '.png', '.svg', '.gif'];
