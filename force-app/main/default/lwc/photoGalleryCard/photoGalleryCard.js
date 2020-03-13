@@ -20,13 +20,13 @@ export default class PhotoGalleryCard extends LightningElement {
         return ['.jpg', '.jpeg', '.png', '.svg', '.gif'];
     }
 
-    handleUploadFinished(event) {
-        // Get the list of uploaded files
+    handleUploadFinished() {
         this.dispatchEvent(new ShowToastEvent({
             title: `Success`,
             message: `Image(s) have been uploaded`,
             variant: 'success',
         }));
+        this.template.querySelector("c-photo-list").handleRefresh();
     }
 
 }

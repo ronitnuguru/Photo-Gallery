@@ -36,6 +36,8 @@
             <property name="label" type="String" label="Label" default="Photo Gallery"/>
             <property name="icon" type="String" label="Icon" default="action:add_photo_video"/>
             <property name="minImages" type="Integer" label="Minimum Images"/>
+            <property name="uniformHeight" type="Integer" label="Uniform Height"/>
+            <property name="uniformWidth" type="Integer" label="Uniform Width"/>
             <property name="imageSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Image Size" default="12" required="true"/>
             <property name="smallDeviceSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Small Device Size" default="6"/>
             <property name="mediumDeviceSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Medium Device Size" default="4"/>
@@ -48,6 +50,8 @@
             <property name="label" type="String" label="Label" default="Photo Gallery"/>
             <property name="icon" type="String" label="Icon" default="action:add_photo_video"/>
             <property name="minImages" type="Integer" label="Minimum Images"/>
+            <property name="uniformHeight" type="Integer" label="Uniform Height"/>
+            <property name="uniformWidth" type="Integer" label="Uniform Width"/>
             <property name="imageSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Image Size" default="12" required="true"/>
             <property name="smallDeviceSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Small Device Size" default="6"/>
             <property name="mediumDeviceSize" type="String" datasource="1,2,3,4,5,6,7,8,9,10,11,12" label="Medium Device Size" default="4"/>

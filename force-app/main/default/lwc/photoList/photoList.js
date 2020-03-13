@@ -1,4 +1,5 @@
 import { LightningElement, api, wire, track } from 'lwc';
+import {refreshApex} from '@salesforce/apex';
 import getRelatedImagesByRecordId from '@salesforce/apex/ImagesListController.getRelatedImagesByRecordId';
 
 export default class PhotoList extends LightningElement {
@@ -21,7 +22,6 @@ export default class PhotoList extends LightningElement {
     @track footerText = "View All";
     @track footerToggle = true;
     @track imageBadge;
-
    
     @wire(getRelatedImagesByRecordId, { recordId: '$recordId' })
     wiredFilesList({ error, data }) {
@@ -53,5 +53,9 @@ export default class PhotoList extends LightningElement {
     }
     showMaxData(){
         this.showData = this.fullData;
+    }
+
+    @api handleRefresh(){
+        window.location.reload(false);
     }
 }
