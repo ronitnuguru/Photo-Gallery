@@ -3,29 +3,93 @@
     <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
   </template>
 
-  <lightning-layout class="slds-scrollable_x" style="width:100%;overflow:auto">
-    <template if:true={zeroPhotoDataLength}>
+  <template if:true={zeroPhotoDataLength}>
+    <div class="slds-align_absolute-center">
       No related images found. Please attach photos of supported file extension
-    </template>
-    <template for:each={showData} for:item="photo">
-      <lightning-layout-item flexibility="auto,shrink" padding="around-small" key={photo.Id} size={imageSize}
-        small-device-size={smallDeviceSize} medium-device-size={mediumDeviceSize} large-device-size={largeDeviceSize}
-      >
-        <c-photo content-id={photo.Id} title={photo.Title} display-file-name={displayFileName}
-          uniform-height={uniformHeight} uniform-width={uniformWidth}
-        ></c-photo>
-      </lightning-layout-item>
-    </template>
-  </lightning-layout>
-
-  <template if:true={showFooter}>
-    <div class="slds-border_top">
-        <span class="slds-align_absolute-center slds-p-top_small" onclick={viewAll} style="cursor:pointer">
-          <a>{footerText}</a>
-          &nbsp;
-          <lightning-badge label={imageBadge}></lightning-badge>
-          <lightning-icon icon-name="utility:chevronright" alternative-text="more" size="xx-small"></lightning-icon>
-        </span> 
     </div>
   </template>
+
+  <template if:false={zeroPhotoDataLength}>
+
+    <template if:true={isGalleryTypeScrolling}>
+      <lightning-layout class="slds-scrollable_x scrollStyle" style={uniformHeightStyle}>
+        <template for:each={showData} for:item="photo">
+          <lightning-layout-item flexibility="auto,shrink" padding="around-small" key={photo.Id} size={imageSize}
+            small-device-size={smallDeviceSize} medium-device-size={mediumDeviceSize} large-device-size={largeDeviceSize}>
+            <c-photo content-id={photo.Id} title={photo.Title} display-file-name={displayFileName}></c-photo>
+          </lightning-layout-item>
+        </template>
+      </lightning-layout>
+
+      <template if:true={showFooter}>
+        <div class="slds-border_top">
+            <span class="slds-align_absolute-center slds-p-top_small" onclick={viewAll} style="cursor:pointer">
+              <span class="thumbnail-pulse">
+                <a>{footerText}</a>
+                &nbsp;
+                <lightning-badge label={imageBadge}></lightning-badge>
+                <lightning-icon icon-name="utility:chevronright" alternative-text="more" size="xx-small"></lightning-icon>
+              </span>
+            </span> 
+        </div>
+      </template>
+    </template>
+
+    <template if:false={isGalleryTypeScrolling}>
+      <div class="slds-grid slds-p-bottom_xx-small">
+        <div class="slds-col slds-size_1-of-12 slds-align_absolute-center" style="float:left">
+          <span><lightning-icon class="thumbnailChevron thumbnail-pulse" icon-name="utility:chevronleft" alternative-text="previous" size="medium"></lightning-icon></span>
+        </div>
+        <div class="slds-col slds-size_10-of-12 slds-align_absolute-center">
+          <span>
+            <c-current-photo current-image-id={currentImageId}>
+            </c-current-photo>
+          </span>
+        </div>
+        <div class="slds-col slds-size_1-of-12 slds-align_absolute-center" style="float:right">
+          <span>
+            <lightning-icon class="thumbnailChevron thumbnail-pulse" icon-name="utility:chevronright" alternative-text="next" size="medium"></lightning-icon>
+          </span>
+        </div>
+      </div>
+      <div class="slds-border_top slds-p-around_x-small">
+        <div class="thumbnailChevron thumbnail-pulse" style="float:left">
+          <template if:false={isThumbnailListHidden}>
+            <span onclick={hideThumbnails} >
+              <lightning-icon  icon-name="utility:chevrondown" alternative-text="down" size="x-small"></lightning-icon>
+                &nbsp;Hide Thumbnails
+            </span>
+          </template>
+          <template if:true={isThumbnailListHidden}>
+            <span onclick={hideThumbnails}>
+              <lightning-icon  icon-name="utility:chevronup" alternative-text="down" size="x-small"></lightning-icon>
+              &nbsp;Show Thumbnails
+            </span>
+          </template>
+        </div>
+        <div style="float:right">
+          {imageIndex}/{fullDataLength}
+        </div>
+
+        <template if:false={isThumbnailListHidden}>
+          <div class="slds-scrollable_x" style="width:100%;overflow:auto">
+            <div class="slds-p-around_xx-small" style={uniformHeightStyle}>
+              <lightning-layout class="slds-scrollable_x" style="width:100%;overflow:auto">
+                  <template for:each={showData} for:item="photo" for:index="index">
+                    <lightning-layout-item padding="around-small" key={photo.Id} size="2" >
+                      <c-photo content-id={photo.Id} title={photo.Title} display-file-name={displayFileName}
+                        uniform-height={uniformHeight} uniform-width={uniformWidth} data-id={index} data-img={photo.Id} onclick={currentPhoto}
+                      ></c-photo>
+                    </lightning-layout-item>
+                  </template>
+              </lightning-layout>
+            </div>
+          </div>
+        </template>
+      
+
+      </div>
+    </template>
+  </template>
+  
 </template>

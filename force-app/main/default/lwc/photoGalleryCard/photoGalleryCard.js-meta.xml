@@ -17,6 +17,7 @@
             </supportedFormFactors>
             <property name="label" type="String" label="Label" default="Photo Gallery"/>
             <property name="icon" type="String" label="Icon" default="action:add_photo_video"/>
+            <property name="galleryType" type="String" label="Gallery Type" datasource="Horizontal Scroll, Thumbnail Carousel" default="Horizontal Scroll" required="true" />
             <property name="minImages" type="Integer" label="Minimum Images"/>
             <property name="uniformHeight" type="Integer" label="Uniform Height"/>
             <property name="uniformWidth" type="Integer" label="Uniform Width"/>

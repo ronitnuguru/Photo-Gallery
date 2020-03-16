@@ -4,6 +4,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 export default class PhotoGalleryCard extends LightningElement {
 
     @api recordId;
+    @api galleryType;
     @api minImages;
     @api displayFileName;
     @api imageSize;

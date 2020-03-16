@@ -1,5 +1,4 @@
 import { LightningElement, api, wire, track } from 'lwc';
-import {refreshApex} from '@salesforce/apex';
 import getRelatedImagesByRecordId from '@salesforce/apex/ImagesListController.getRelatedImagesByRecordId';
 
 export default class PhotoList extends LightningElement {
@@ -13,16 +12,30 @@ export default class PhotoList extends LightningElement {
     @api largeDeviceSize;
     @api uniformHeight;
     @api uniformWidth;
+    @api galleryType;
 
     @track showData;
     @track fullData;
+    @track fullDataLength;
     @track isPhotoListDataLoaded = false;
     @track zeroPhotoDataLength;
     @track showFooter;
     @track footerText = "View All";
     @track footerToggle = true;
     @track imageBadge;
-   
+    @track isGalleryTypeScrolling;
+    @track isThumbnailListHidden = false;
+    @track uniformHeightStyle;
+    @track imageIndex = 1;
+    @track currentImageId;
+
+    connectedCallback(){
+        this.isGalleryTypeScrolling = this.galleryType === 'Horizontal Scroll' ? true : false;
+        if(this.uniformHeight)
+            this.uniformHeightStyle = `height: ${this.uniformHeight}px`;
+
+    }
+
     @wire(getRelatedImagesByRecordId, { recordId: '$recordId' })
     wiredFilesList({ error, data }) {
         if(data) {
@@ -33,18 +46,19 @@ export default class PhotoList extends LightningElement {
             
         this.isPhotoListDataLoaded = true;
         this.imageBadge = data.length;
+        this.fullDataLength = data.length;
         this.fullData = data;
         this.showMinData();
         }
         else if (error) {
-            console.log(error);
+            //Handle Error
         }
     }
 
     viewAll(){
         this.footerText = this.footerToggle ? "View Less" : "View All";
         this.photoData = this.footerToggle ? this.showMaxData() : this.showMinData();
-        this.imageBadge = this.footerToggle ? this.minImages : this.fullData.length;
+        this.imageBadge = this.footerToggle ? this.minImages : this.fullDataLength;
         this.footerToggle = !this.footerToggle;
     }
 
@@ -55,7 +69,18 @@ export default class PhotoList extends LightningElement {
         this.showData = this.fullData;
     }
 
-    @api handleRefresh(){
-        window.location.reload(false);
+    hideThumbnails(){
+        this.isThumbnailListHidden = !this.isThumbnailListHidden;
     }
+
+    @api handleRefresh(){
+        location.reload(false);
+    }
+
+    currentPhoto(event){
+        let indexVal = event.target.dataset.id;
+        this.imageIndex = parseInt(indexVal, 10)+1;
+        this.currentImageId = event.target.dataset.img;
+    }
+
 }

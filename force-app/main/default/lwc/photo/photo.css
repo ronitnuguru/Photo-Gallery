@@ -1,3 +1,7 @@
 .picture {
     cursor: pointer;
 }
+
+.picture-sizing{
+    height: -webkit-fill-available;
+}
