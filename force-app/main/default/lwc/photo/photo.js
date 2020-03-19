@@ -1,7 +1,9 @@
 import { LightningElement, track, api } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
 
-export default class Photo extends LightningElement {
+export default class Photo extends NavigationMixin(LightningElement) {
     @api contentId;
+    @api contentDocumentId;
     @track imageUrl;
     @api title;
     @api displayFileName;
@@ -9,19 +11,20 @@ export default class Photo extends LightningElement {
     @api uniformWidth;
     
     @track prefixUrl = `/sfc/servlet.shepherd/version/download/`;
-    @track isImageClicked = false;
-    @track clickedImageUrl;
 
     connectedCallback(){
         this.imageUrl = `${this.prefixUrl}${this.contentId}`;
     }
 
-    imageClick(event){
-        this.clickedImageUrl = event.target.src;
-        this.isImageClicked = true;
-    }
-
-    handleModalClosed(){
-        this.isImageClicked=false;
+    imageClick(){
+        this[NavigationMixin.Navigate]({
+            type: 'standard__namedPage',
+            attributes: {
+                pageName: 'filePreview'
+            },
+            state : {
+                recordIds: this.contentDocumentId
+            }
+          })
     }
 }

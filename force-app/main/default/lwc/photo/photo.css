@@ -1,5 +1,10 @@
 .picture {
     cursor: pointer;
+    transition: all .2s ease-in-out; 
+}
+
+.picture:hover {
+    transform: scale(1.1);
 }
 
 .picture-sizing{
