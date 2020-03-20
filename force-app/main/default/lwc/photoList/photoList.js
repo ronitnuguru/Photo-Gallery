@@ -28,12 +28,24 @@ export default class PhotoList extends LightningElement {
     @track uniformHeightStyle;
     @track imageIndex = 1;
     @track currentImageId;
+    @track clickedThumbnailImageUrl;
+    @track prefixUrl = `/sfc/servlet.shepherd/version/download/`;
+    @track showNextIcon;
+    @track showPreviousIcon;
+
+    @track currentImageIndex = 0;
+    @track nextImageIndex = this.currentImageIndex + 1;
+    @track previousImageIndex = this.currentImageIndex - 1;
+
+    constructor(){
+        super();
+        this.showPreviousIcon = this.previousImageIndex <= 0 ? false : true;
+    }
 
     connectedCallback(){
-        this.isGalleryTypeScrolling = this.galleryType === 'Horizontal Scroll' ? true : false;
+        this.isGalleryTypeScrolling = this.galleryType === 'HorizontalScrollGallery' ? true : false;
         if(this.uniformHeight)
             this.uniformHeightStyle = `height: ${this.uniformHeight}px`;
-
     }
 
     @wire(getRelatedImagesByRecordId, { recordId: '$recordId' })
@@ -49,6 +61,8 @@ export default class PhotoList extends LightningElement {
         this.fullDataLength = data.length;
         this.fullData = data;
         this.showMinData();
+        this.clickedThumbnailImageUrl = `${this.prefixUrl}${data[0].Id}`;
+        this.showNextIcon = this.nextImageIndex >= this.fullDataLength ? false : true;
         }
         else if (error) {
             //Handle Error
@@ -77,10 +91,36 @@ export default class PhotoList extends LightningElement {
         location.reload(false);
     }
 
-    currentPhoto(event){
+    handleCurrentSelectedPhoto(event){
+        this.clickedThumbnailImageUrl = event.detail;
         let indexVal = event.target.dataset.id;
         this.imageIndex = parseInt(indexVal, 10)+1;
         this.currentImageId = event.target.dataset.img;
+        this.previousImageIndex = this.imageIndex-1;
+        this.nextImageIndex = this.imageIndex;
+        this.showPreviousIcon = this.previousImageIndex <= 0 ? false : true;
+        this.showNextIcon = this.nextImageIndex >= this.fullDataLength ? false : true;
+    }
+
+    previousImage(){
+        const currentIndex = this.imageIndex - 1;
+        this.nextImageIndex = currentIndex + 1;
+        this.previousImageIndex = currentIndex - 1;
+        this.showPreviousIcon = this.previousImageIndex <= 0 ? false : true;
+        this.showNextIcon = this.nextImageIndex >= this.fullDataLength ? false : true;
+        
+        this.clickedThumbnailImageUrl = `${this.prefixUrl}${this.fullData[this.previousImageIndex].Id}`;
+        this.imageIndex--;
+    }
+
+    nextImage(){
+        const currentIndex = this.imageIndex - 1;
+        this.nextImageIndex = currentIndex + 1;
+        this.previousImageIndex = currentIndex - 1;
+        this.showPreviousIcon = this.previousImageIndex <= 0 ? false : true;
+        this.showNextIcon = this.nextImageIndex >= this.fullDataLength ? false : true;
+        this.clickedThumbnailImageUrl = `${this.prefixUrl}${this.fullData[this.nextImageIndex].Id}`;
+        this.imageIndex++;
     }
 
 }
